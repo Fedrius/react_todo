@@ -12,7 +12,7 @@ export default [
         complete: false
     },
     {
-        title: 'start eating again',
+        title: 'keep eating',
         complete: false
     },
 ];

@@ -7,7 +7,7 @@ import todoData from '../assets/data'
 class TodoList extends Component {
     render(){
         const listItems = this.props.list.map((item, index)=>{
-            return <ListItem key={index} title={item.title} delete={()=>{this.props.delete(index)}}/>
+            return <ListItem key={index} title={item.title} delete={()=>{this.props.delete(item._id)}}/>
         });
 
         return (

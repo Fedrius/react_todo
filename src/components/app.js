@@ -20,6 +20,7 @@ class App extends Component {
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
+        this.toggleComplete = this.toggleComplete.bind(this);
     }
 
     getData(){
@@ -43,27 +44,24 @@ class App extends Component {
     }
 
     deleteItem(id){
-        console.log('delete',id);
-
         axios.delete(`${BASE_URL}/todos/${id + API_KEY}`).then((response)=>{
-            console.log('deletee',response);
-
             this.getData();
         })
     }
 
-    toggleComplete(){
-        // (`${BASE_URL}/todos/${id + API_KEY}`)
-        // different style when clicked complete
-        //and different style when not complete
+    toggleComplete(id){
+        axios.put(`${BASE_URL}/todos/${id + API_KEY}`).then((response)=>{
+            this.getData();
+        })
     }
 
     render(){
+
         return (
             <div className='container'>
                 <h1 className='center-align'>To Eat App</h1>
                 <AddForm add={this.addItem}/>
-                <TodoList list={this.state.list} delete={this.deleteItem}/>
+                <TodoList list={this.state.list} delete={this.deleteItem} toggle={this.toggleComplete}/>
             </div>
         );
     }

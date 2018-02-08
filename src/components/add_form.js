@@ -24,10 +24,7 @@ class AddForm extends Component {
     addItem(event){
         event.preventDefault();
 
-        console.log(this.state);
-
         this.props.add(this.state);
-
         this.setState({
             title:'',
             details: ''
